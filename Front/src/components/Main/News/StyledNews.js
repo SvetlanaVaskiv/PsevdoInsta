@@ -1,21 +1,34 @@
 import styled from "styled-components";
+import bcg from "../../../images/comments.jpeg";
+import { Card } from "react-bootstrap";
 
 export const LayoutNewsPage = styled.div`
-  border-radius: 10px;
-  border: solid 2px rgb(123 156 200 / 87%);
   padding: 10px;
   margin: 5px;
   align-items: center;
   display: flex;
   flex-direction: column;
+  max-width: 1280px;
+  font-family: "emoji";
 `;
 
+export const CommentBlock = styled.div`
+  font-size: xxx-large;
+  font-style: italic;
+  font-family: emoji;
+  font-weight: 600;
+  color: rgb(185 19 137);
+  background: no-repeat;
+  min-width: 100%;
+  background-size: cover;
+  background-image: url(${bcg});
+  border-radius: 25px;
+`;
 export const ImagePost = styled.img`
-  height: 700px;
-  width: 700px;
   object-fit: contain;
   margin: 0 auto;
   display: block;
+  width: 100%;
 `;
 export const styledList = styled.ul`
   display: flex;
@@ -25,25 +38,44 @@ export const styledList = styled.ul`
   justify-content: center;
   align-items: center;
 `;
-export const styledText = styled.div`
-  background-color: antiquewhite;
-  font-size: x-large;
-  font-family: serif;
-  border-radius: 10 px;
-`;
+
 export const BackgroundNews = styled.div`
   background-color: transparent;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
   text-align: center;
-  padding-top: 1%;
-  margin-top: 20px;
+  padding: 1%;
+  margin: 20px;
 `;
-export const styledComments = styled.div`
+/*export const styledComments = styled.div`
   font-size: xx-large;
   font-family: cursive;
   color: #ff006e;
   font-weight: 600;
+`;*/
+export const PostText = styled(Card)`
+  background-color: #6495ed7d;
+  text-decoration-line: underline;
+`;
+export const OnePost = styled.div`
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-image: url(${bcg});
+  border-radius: 25px;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+export const CardHeader = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  align-items: center;
+  justify-content: space-around;
+  font-family: fangsong;
+  letter-spacing: 2px;
+  font-size: xxx-large;
+  color: #e8f0f1;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
 `;

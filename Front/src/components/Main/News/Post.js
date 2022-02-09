@@ -1,7 +1,7 @@
 import { Link, useHistory } from "react-router-dom";
 import { React } from "react";
 import { Card } from "react-bootstrap";
-import CardHeader from "@mui/material/CardHeader";
+//import CardHeader from "@mui/material/CardHeader";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
@@ -9,11 +9,17 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { ImagePost, LayoutNewsPage } from "./StyledNews";
+import {
+  CommentBlock,
+  ImagePost,
+  LayoutNewsPage,
+  OnePost,
+  PostText,
+  CardHeader,
+} from "./StyledNews";
 import { CardActionArea } from "@mui/material";
 import store from "../../../redux";
 import Button from "react-bootstrap/Button";
-import bcg from "../../../images/comments.jpeg";
 
 export const Post = ({
   post: {
@@ -45,26 +51,27 @@ export const Post = ({
   };
   return (
     <LayoutNewsPage>
-      <Card sx={{ maxWidth: 750 }} key={id}>
-        <CardHeader
-          avatar={avaJSX}
-          action={
-            <Link to={`/profile/user/${userId}/name/${username}`}>
-              <Button>
-                Profile
-                <MoreVertIcon />
-              </Button>
-            </Link>
-          }
-          title={username}
-          subheader={date}
-        />
+      <OnePost key={id}>
+        <CardHeader>
+          <div>{avaJSX}</div>
+          <div>
+            <span>Friend: {username}; </span>
+            <span>Date: {date} </span>
+          </div>
+          <Link to={`/profile/user/${userId}/name/${username}`}>
+            <Button>
+              Profile
+              <MoreVertIcon />
+            </Button>
+          </Link>
+        </CardHeader>
+
         {imagesJSX}
         <CardContent>
-          <Card>
+          <PostText>
             <Card.Body> {text}</Card.Body>
             <Card.Body> {title}</Card.Body>
-          </Card>
+          </PostText>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
@@ -77,25 +84,9 @@ export const Post = ({
           }}
           id={id}
         >
-          <Typography
-            sx={{
-              fontWeight: "600",
-              fontSize: "2.875rem",
-              color: "rgb(185 19 137)",
-            }}
-            variant="body2"
-            color="text.secondary"
-            style={{
-              backgroundImage: `url(${bcg})`,
-              backgroundRepeat: "no-repeat",
-              minWidth: "100%",
-              backgroundSize: "cover",
-            }}
-          >
-            VIEW ALL {count} COMMENTS
-          </Typography>
+          <CommentBlock>VIEW ALL {count} COMMENTS</CommentBlock>
         </CardActionArea>
-      </Card>
+      </OnePost>
     </LayoutNewsPage>
   );
 };

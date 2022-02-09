@@ -24,14 +24,7 @@ const News = ({ news, getPosts }) => {
           ))}
         </styledList>
         {news.length === 0 && (
-          <div
-            style={{
-              border: "1px solid red",
-              padding: 50,
-              margin: 50,
-              height: "100vh",
-            }}
-          >
+          <div>
             <Link to={routers.SEARCH.path}>Find new friends</Link>
           </div>
         )}
