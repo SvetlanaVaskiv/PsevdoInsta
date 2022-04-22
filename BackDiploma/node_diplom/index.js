@@ -3,7 +3,7 @@ const app = require("express")();
 const fs = require("fs"); //для заливки файлов
 const bodyParser = require("body-parser");
 const { Sequelize, DataTypes, Model, where } = require("sequelize");
-const sequelize = new Sequelize("mysql://admin:password@localhost/insta");
+const sequelize = new Sequelize("mysql://root:Vccz4m3u!@localhost/insta");
 const { graphqlHTTP: express_graphql } = require("express-graphql");
 const { buildSchema } = require("graphql");
 const SECRET = "big big SeCret";
@@ -13,12 +13,14 @@ const sharp = require("sharp");
 
 function jwtCheck(req, secret) {
   const authorization = req && req.headers && req.headers.authorization;
-
+  console.log('req',req.headers.authorization)
   if (authorization && authorization.startsWith("Bearer ")) {
     const token = authorization.substr("Bearer ".length);
+    console.log("token", token)
     let decoded;
     try {
       decoded = jwt.verify(token, secret);
+      console.log("decoded", decoded)
     } catch (e) {
       return new null();
     }
@@ -31,7 +33,6 @@ const upload = multer({ dest: uploadPath });
 
 app.post("/upload", upload.single("avatar"), async function (req, res, next) {
   let filedata = req.file;
-  console.log(filedata);
   const jwt = jwtCheck(req, SECRET);
   if (!filedata || !jwt) res.send(JSON.stringify("Error loading file"));
 
@@ -226,7 +227,7 @@ Comment.belongsTo(User);
 Comment.belongsTo(Comment, { as: "parent", sourceKey: "parentId" });
 Comment.hasMany(Comment, { as: "answers", foreignKey: "parentId" });
 
-(async () => {
+/*(async () => {
   try {
     const vasya = await User.create({
       username: "vasya",
@@ -342,11 +343,11 @@ Comment.hasMany(Comment, { as: "answers", foreignKey: "parentId" });
       isAvatar: true,
     });
 
-    /* console.log("LOOK IT IS FOLLOWERS", await misha.getFollowers());
+    console.log("LOOK IT IS FOLLOWERS", await misha.getFollowers());
     console.log("LOOK AT HERE", await kolya.getFollowings());
     console.log("HERE IS AVATAR", await misha.getAvatar());
     console.log(await User.findByPk("4"));
-    console.log(await User.findByPk(5));*/
+    console.log(await User.findByPk(5));
     const post = await vasya.createPost({ title: "post 1", text: "i am cool" });
     const vasya2 = await User.findOne({ where: { username: "vasya" } });
     console.log(await User.findAll({ where: { username: "kolya" } }));
@@ -360,7 +361,7 @@ Comment.hasMany(Comment, { as: "answers", foreignKey: "parentId" });
   } catch (err) {
     console.log(err);
   }
-})();
+})();*/
 console.log(User.prototype);
 console.log("LIKES", Like.prototype);
 
@@ -613,10 +614,10 @@ const resolvers = {
     );
   },
   async addPost({ text, title, imageId }, { thisUser }) {
+    console.log(thisUser)
     if (!thisUser) return null;
 
     const input = { text, title, imageId };
-    console.log(imageId);
     let postss = await thisUser.createPost(input);
     let postId = postss.dataValues.id;
     let createImage = await Image.update(
