@@ -30,7 +30,7 @@ export const ImagePost = styled.img`
   display: block;
   width: 100%;
 `;
-export const styledList = styled.ul`
+export const StyledList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

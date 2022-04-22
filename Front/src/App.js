@@ -10,14 +10,12 @@ import { LogInPage } from "./pages/auth/LoginPage";
 import { ProfilePage } from "./pages/auth/ProfilePage";
 import { Registration } from "./pages/auth/RegistrationPage";
 import { routers } from "./utils/routes";
-import createHistory from "history/createBrowserHistory";
 import { NewsPage } from "./pages/main/NewsPage";
-import { FontAwesomeIcon } from "./components/Footer";
 import { SettingsPage } from "./pages/main/SettingsPage";
 import { CommentsPage } from "./pages/main/CommentsPage";
 import { SearchPage } from "./pages/main/SearchPage";
-export const history = createHistory();
 
+import history from "./history.js";
 function App() {
   return (
     <>

@@ -40,7 +40,8 @@ const Profile = ({ onLogOut, info }) => {
   const goToSettings = () => {
     history.push(`/settings/user${id}`);
   };
-
+  useEffect(() => {
+      },[goToSettings])
   return (
     <>
       {" "}

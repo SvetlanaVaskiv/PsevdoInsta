@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { ationGetFullNews } from "../../../redux/actions";
 import { Footer } from "../../Footer";
 import { Post } from "./Post";
-import { BackgroundNews, styledList } from "./StyledNews";
+import { BackgroundNews, StyledList } from "./StyledNews";
 import bcg from "../../../images/maxresdefault.jpg";
 import { Link } from "react-router-dom";
 import { routers } from "../../../utils/routes";
@@ -18,11 +18,11 @@ const News = ({ news, getPosts }) => {
     <>
       {" "}
       <BackgroundNews style={{ backgroundImage: `url(${bcg})` }}>
-        <styledList>
+        <StyledList>
           {news.map((post) => (
-            <Post post={post} />
+            <Post post={post} key={post.id} />
           ))}
-        </styledList>
+        </StyledList>
         {news.length === 0 && (
           <div>
             <Link to={routers.SEARCH.path}>Find new friends</Link>

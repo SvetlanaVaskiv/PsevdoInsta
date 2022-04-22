@@ -3,10 +3,11 @@ import { connect, useDispatch } from "react-redux";
 import { actionGetAllPosts, actionAddFollowing } from "../../../redux/actions";
 import { AllPost } from "./AllPosts";
 import bcg from "../../../images/friend.jpg";
-import { BackgroundNews, styledList } from "../News/StyledNews";
+import { BackgroundNews, StyledList } from "../News/StyledNews";
 
 const Search = ({ posts, addFollowings }) => {
   posts = posts || [];
+  console.log(posts)
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actionGetAllPosts());
@@ -15,14 +16,14 @@ const Search = ({ posts, addFollowings }) => {
   return (
     <>
       <BackgroundNews style={{ backgroundImage: `url(${bcg})` }}>
-        <styledList>
+        <StyledList>
           <ul className="AllPosts">
             {posts.map((post) => (
-              <AllPost post={post} addFollowings={addFollowings} />
+              <AllPost post={post} key= {post.id} addFollowings={addFollowings} />
             ))}
             [;;
           </ul>
-        </styledList>
+        </StyledList>
       </BackgroundNews>
     </>
   );

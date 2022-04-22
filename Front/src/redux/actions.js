@@ -30,7 +30,7 @@ const getGQL =
 const gql = getGQL();
 //export const actionInfoSave = () => ({ type: "CHECK" });
 export const actionAuthLogout = () => ({ type: "LOGOUT" });
-export const LogOut = (dispatch) => dispatch(actionAuthLogout);
+//export const LogOut = (dispatch) => dispatch(actionAuthLogout);
 
 export const actionAuthLogin = (token) => ({ type: "LOGIN", token });
 
@@ -77,7 +77,6 @@ export const actionGetAllPosts = () => {
 				getAllPosts{id title text createdAt 
 				comments{id text createdAt owner{id username}}
 					images{id url originalFileName}
-					likes{ _id owner{id}}
 					owner{ id username avatar{ url id }}
 				}
 			}	 `

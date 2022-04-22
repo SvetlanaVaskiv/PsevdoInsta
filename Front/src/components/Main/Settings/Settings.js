@@ -27,14 +27,14 @@ const Settings = ({ info, onSignUp, check }) => {
   const [birthday, setBirthday] = useState("");
   const [show, setShow] = useState(false);
 
-  const isValid = () => {
+  const isvalid = () => {
     ///change the validation
     if (!username || !password || !email || !birthday) {
       return false;
     } else return true;
   };
   const signUpCallback = () => {
-    if (isValid()) {
+    if (isvalid) {
       onSignUp(username, password, email, birthday);
     } else {
       setShow(true);
@@ -90,7 +90,6 @@ const Settings = ({ info, onSignUp, check }) => {
             <Button
               variant="primary"
               name="Login"
-              isValid={isValid()}
               onClick={(e) => {
                 signUpCallback(e);
               }}

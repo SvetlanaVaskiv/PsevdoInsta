@@ -2,9 +2,6 @@ import { Button } from "react-bootstrap";
 import { actionAddPost, actiongetPosts } from "../../redux/actions";
 import { Backdrop, Content } from "./ModalStyle";
 import { connect } from "react-redux";
-import { useState } from "react";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
 
 const Modal = ({ children, onSend, closeModal, text, title, id }) => {
   const addPostCallback = () => {

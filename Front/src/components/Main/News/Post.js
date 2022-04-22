@@ -37,14 +37,14 @@ export const Post = ({
   const parsed = parseInt(createdAt);
   let date = new Date(parsed).toLocaleString();
   let avaJSX = avatar?.map((item) => (
-    <Avatar alt={title} src={`http://localhost:4000/${item.url}`} />
+    <Avatar alt={title} src={`http://localhost:4000/${item.url}`} key={item.id} />
   ));
   let com = comments?.map((item) => item.id);
   let count = com.length;
   let imagesJSX =
     images &&
     images.map((item) => (
-      <ImagePost src={`http://localhost:4000/${item.url}`} alt={title} />
+      <ImagePost src={`http://localhost:4000/${item.url}`} alt={title} key={item.id} />
     ));
   const goToComment = () => {
     history.push(`/comments/post${id}`);
